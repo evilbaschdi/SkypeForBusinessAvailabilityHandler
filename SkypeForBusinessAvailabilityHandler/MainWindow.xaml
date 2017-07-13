@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkypeForBusinessAvailabilityHandler"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d" Icon="a.ico"
+        Title="SkypeForBusinessAvailabilityHandler" Height="350" Width="525">
     <Grid>
-        
+        <!-- Taskbar Icon -->
+        <tb:TaskbarIcon Name="AvailabilityHandlerTaskbarIcon" ToolTip="Skype for Business Availability Handler" ToolTipText="Skype for Business Availability Handler" />
     </Grid>
 </Window>

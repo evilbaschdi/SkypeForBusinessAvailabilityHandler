@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\SkypeForBusinessAvailabilityHandler.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,10 +33,40 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\SkypeForBusinessAvailabilityHandler.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>a.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EvilBaschdi.Core, Version=1.1.6313.30025, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EvilBaschdi.Core.2017.4.14.1\lib\net462\EvilBaschdi.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.1.9.0\lib\net46\MahApps.Metro.IconPacks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Lync.Model, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Office 2013\LyncSDK\Assemblies\Desktop\Microsoft.Lync.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Lync.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Office 2013\LyncSDK\Assemblies\Desktop\Microsoft.Lync.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,6 +93,62 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\AppConfiguration.cs">
+      <DependentUpon>IAppConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\AutoStart.cs">
+      <DependentUpon>IAutoStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\AutoStartByConfiguration.cs">
+      <DependentUpon>IAutoStartByConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\CachedValue.cs">
+      <DependentUpon>ICachedValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\IAppConfiguration.cs" />
+    <Compile Include="Core\IAutoStart.cs" />
+    <Compile Include="Core\IAutoStartByConfiguration.cs" />
+    <Compile Include="Core\ICachedValue.cs" />
+    <Compile Include="Core\IMainWindowInstance.cs" />
+    <Compile Include="Core\ITaskbarIconContextMenu.cs" />
+    <Compile Include="Core\ITaskbarIconInstance.cs" />
+    <Compile Include="Core\MainWindowInstance.cs">
+      <DependentUpon>IMainWindowInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\TaskbarIconContextMenu.cs">
+      <DependentUpon>ITaskbarIconContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\TaskbarIconInstance.cs">
+      <DependentUpon>ITaskbarIconInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal\ApplicationList.cs">
+      <DependentUpon>IApplicationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal\DispatcherTimerInstance.cs">
+      <DependentUpon>IDispatcherTimerInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal\DispatcherTimerTick.cs">
+      <DependentUpon>IDispatcherTimerTick.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal\IApplicationList.cs" />
+    <Compile Include="Internal\IDispatcherTimerInstance.cs" />
+    <Compile Include="Internal\IDispatcherTimerTick.cs" />
+    <Compile Include="Internal\ILyncAvailability.cs" />
+    <Compile Include="Internal\ILyncClientInstance.cs" />
+    <Compile Include="Core\ITaskbarIconConfiguration.cs" />
+    <Compile Include="Internal\IProcessDispatcherHandler.cs" />
+    <Compile Include="Internal\LyncClientInstance.cs">
+      <DependentUpon>ILyncClientInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal\LyncAvailability.cs">
+      <DependentUpon>ILyncAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal\ProcessDispatcherHandler.cs">
+      <DependentUpon>IProcessDispatcherHandler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\TaskbarIconConfiguration.cs">
+      <DependentUpon>ITaskbarIconConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -85,6 +172,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +180,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="a.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SkypeForBusinessAvailabilityHandler.VisualElementsManifest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
