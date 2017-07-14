@@ -61,7 +61,7 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             }
             else
             {
-                if (_setStateInternal && currentAvailability.Equals(ContactAvailability.Busy))
+                if (!setToBusy && _setStateInternal && currentAvailability.Equals(ContactAvailability.Busy))
                 {
                     _lyncAvailability.RunFor(ContactAvailability.Free);
                     _setStateInternal = false;
