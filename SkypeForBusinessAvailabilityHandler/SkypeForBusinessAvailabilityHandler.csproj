@@ -187,6 +187,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="a_150.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="a_70.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SkypeForBusinessAvailabilityHandler.VisualElementsManifest.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

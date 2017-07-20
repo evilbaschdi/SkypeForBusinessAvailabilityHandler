@@ -6,9 +6,9 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
 {
     public class DispatcherTimerTick : IDispatcherTimerTick
     {
-        private readonly ILyncClientInstance _lyncClientInstance;
-        private readonly ILyncAvailability _lyncAvailability;
         private readonly IApplicationList _applicationList;
+        private readonly ILyncAvailability _lyncAvailability;
+        private readonly ILyncClientInstance _lyncClientInstance;
         private bool _setStateInternal;
 
         public DispatcherTimerTick(ILyncClientInstance lyncClientInstance, ILyncAvailability lyncAvailability, IApplicationList applicationList)
@@ -40,6 +40,10 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
+            }
+            if (_lyncClientInstance.Value.State != ClientState.SignedIn)
+            {
+                return;
             }
             var processes = Process.GetProcesses();
             var setToBusy = false;
