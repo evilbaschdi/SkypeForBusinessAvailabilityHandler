@@ -1,5 +1,6 @@
 ﻿namespace SkypeForBusinessAvailabilityHandler.Core
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Abstract class for value caching
     /// </summary>
@@ -14,6 +15,7 @@
         /// </summary>
         protected abstract T NonCachedValue { get; }
 
+        /// <inheritdoc />
         /// <summary>
         ///     Cached value
         /// </summary>

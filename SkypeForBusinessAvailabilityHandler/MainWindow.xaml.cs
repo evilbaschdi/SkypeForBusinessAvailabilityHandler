@@ -24,7 +24,8 @@ namespace SkypeForBusinessAvailabilityHandler
             ILyncClientInstance lyncClientInstance = new LyncClientInstance();
             ILyncAvailability lyncAvailability = new LyncAvailability(lyncClientInstance);
             IApplicationList applicationList = new ApplicationList(appConfiguration);
-            IDispatcherTimerTick dispatcherTimerTick = new DispatcherTimerTick(lyncClientInstance, lyncAvailability, applicationList);
+            IIsProcessRunning isProcessRunning = new IsProcessRunning();
+            IDispatcherTimerTick dispatcherTimerTick = new DispatcherTimerTick(lyncClientInstance, lyncAvailability, applicationList, isProcessRunning);
             IDispatcherTimerInstance dispatcherTimerInstance = new DispatcherTimerInstance(dispatcherTimer, dispatcherTimerTick);
             IProcessDispatcherHandler processDispatcherHandler = new ProcessDispatcherHandler(dispatcherTimerInstance);
             IAutoStart autoStart = new AutoStart(Title);
