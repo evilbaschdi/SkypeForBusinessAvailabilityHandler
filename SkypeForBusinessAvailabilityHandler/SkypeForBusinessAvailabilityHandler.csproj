@@ -8,11 +8,12 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SkypeForBusinessAvailabilityHandler</RootNamespace>
     <AssemblyName>SkypeForBusinessAvailabilityHandler</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\SkypeForBusinessAvailabilityHandler.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\SkypeForBusinessAvailabilityHandler.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>a.ico</ApplicationIcon>
@@ -115,6 +118,7 @@
     <Compile Include="Core\MainWindowInstance.cs">
       <DependentUpon>IMainWindowInstance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\StringExtensions.cs" />
     <Compile Include="Core\TaskbarIconContextMenu.cs">
       <DependentUpon>ITaskbarIconContextMenu.cs</DependentUpon>
     </Compile>
@@ -133,10 +137,14 @@
     <Compile Include="Internal\IApplicationList.cs" />
     <Compile Include="Internal\IDispatcherTimerInstance.cs" />
     <Compile Include="Internal\IDispatcherTimerTick.cs" />
+    <Compile Include="Internal\IIsProcessRunning.cs" />
     <Compile Include="Internal\ILyncAvailability.cs" />
     <Compile Include="Internal\ILyncClientInstance.cs" />
     <Compile Include="Core\ITaskbarIconConfiguration.cs" />
     <Compile Include="Internal\IProcessDispatcherHandler.cs" />
+    <Compile Include="Internal\IsProcessRunning.cs">
+      <DependentUpon>IIsProcessRunning.cs</DependentUpon>
+    </Compile>
     <Compile Include="Internal\LyncClientInstance.cs">
       <DependentUpon>ILyncClientInstance.cs</DependentUpon>
     </Compile>
@@ -179,7 +187,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="a.ico">

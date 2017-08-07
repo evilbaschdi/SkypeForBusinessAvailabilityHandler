@@ -1,7 +1,4 @@
 using System;
-using System.Diagnostics;
-using System.Linq;
-using EvilBaschdi.Core.DotNetExtensions;
 using Microsoft.Lync.Model;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
@@ -33,22 +30,14 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             {
                 throw new ArgumentNullException(nameof(e));
             }
-            if (!_isProcessRunning.ValueFor("lync.exe") || _lyncClientInstance.Value.State != ClientState.SignedIn)
+            if (!_isProcessRunning.ValueFor("lync") || _lyncClientInstance.Value.State != ClientState.SignedIn)
             {
                 return;
             }
-            //var processes = Process.GetProcesses();
+
             var setToBusy = false;
             var contact = _lyncClientInstance.Value.Self.Contact;
             var currentAvailability = (ContactAvailability) contact.GetContactInformation(ContactInformationType.Availability);
-
-            //foreach (var p in processes)
-            //{
-            //    if (_applicationList.Value.Contains(p.ProcessName))
-            //    {
-            //        setToBusy = true;
-            //    }
-            //}
 
             foreach (var processName in _applicationList.Value)
             {
@@ -58,8 +47,6 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
                 }
                 setToBusy = _isProcessRunning.ValueFor(processName);
             }
-
-            //processes.DisposeAndClearCollection();
 
             if (setToBusy && currentAvailability.Equals(ContactAvailability.Free))
             {
@@ -74,24 +61,6 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
                     _setStateInternal = false;
                 }
             }
-        }
-    }
-
-    public interface IIsProcessRunning : IValueFor<string, bool>
-    {
-    }
-
-    public class IsProcessRunning : IIsProcessRunning
-    {
-        public bool ValueFor(string processName)
-        {
-            if (processName == null)
-            {
-                throw new ArgumentNullException(nameof(processName));
-            }
-            var processes = Process.GetProcesses();
-            var internalProcessName = processName.EndsWith(".exe") ? processName.Remove(processName.Length - 1, 4) : processName;
-            return processes.Any(x => x.ProcessName == internalProcessName);
         }
     }
 }
