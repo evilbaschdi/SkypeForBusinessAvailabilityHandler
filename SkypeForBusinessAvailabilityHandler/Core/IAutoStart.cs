@@ -4,10 +4,16 @@
     /// </summary>
     public interface IAutoStart
     {
-        void Enable();
-
+        /// <summary>
+        /// </summary>
         bool IsEnabled { get; }
 
+        /// <summary>
+        /// </summary>
+        void Enable();
+
+        /// <summary>
+        /// </summary>
         void Disable();
     }
 }

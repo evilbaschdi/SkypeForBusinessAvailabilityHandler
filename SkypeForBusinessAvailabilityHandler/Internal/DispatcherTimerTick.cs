@@ -3,6 +3,7 @@ using Microsoft.Lync.Model;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
+    /// <inheritdoc />
     public class DispatcherTimerTick : IDispatcherTimerTick
     {
         private readonly IApplicationList _applicationList;
@@ -11,6 +12,13 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
         private readonly ILyncClientInstance _lyncClientInstance;
         private bool _setStateInternal;
 
+        /// <summary>
+        ///     Constructor of the class
+        /// </summary>
+        /// <param name="lyncClientInstance"></param>
+        /// <param name="lyncAvailability"></param>
+        /// <param name="applicationList"></param>
+        /// <param name="isProcessRunning"></param>
         public DispatcherTimerTick(ILyncClientInstance lyncClientInstance, ILyncAvailability lyncAvailability, IApplicationList applicationList, IIsProcessRunning isProcessRunning)
         {
             _lyncClientInstance = lyncClientInstance ?? throw new ArgumentNullException(nameof(lyncClientInstance));

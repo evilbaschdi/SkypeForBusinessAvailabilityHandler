@@ -125,7 +125,7 @@
     <Compile Include="Core\TaskbarIconInstance.cs">
       <DependentUpon>ITaskbarIconInstance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Internal\ApplicationList.cs">
+    <Compile Include="Internal\CachedApplicationList.cs">
       <DependentUpon>IApplicationList.cs</DependentUpon>
     </Compile>
     <Compile Include="Internal\DispatcherTimerInstance.cs">
@@ -145,7 +145,7 @@
     <Compile Include="Internal\IsProcessRunning.cs">
       <DependentUpon>IIsProcessRunning.cs</DependentUpon>
     </Compile>
-    <Compile Include="Internal\LyncClientInstance.cs">
+    <Compile Include="Internal\CachedLyncClientInstance.cs">
       <DependentUpon>ILyncClientInstance.cs</DependentUpon>
     </Compile>
     <Compile Include="Internal\LyncAvailability.cs">

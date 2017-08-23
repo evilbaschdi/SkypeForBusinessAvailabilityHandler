@@ -3,6 +3,7 @@ using System.Windows.Threading;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
+    /// <inheritdoc />
     public class DispatcherTimerInstance : IDispatcherTimerInstance
     {
         private readonly DispatcherTimer _dispatcherTimer;
@@ -13,16 +14,8 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
         /// </summary>
         public DispatcherTimerInstance(DispatcherTimer dispatcherTimer, IDispatcherTimerTick dispatcherTimerTick)
         {
-            if (dispatcherTimer == null)
-            {
-                throw new ArgumentNullException(nameof(dispatcherTimer));
-            }
-            if (dispatcherTimerTick == null)
-            {
-                throw new ArgumentNullException(nameof(dispatcherTimerTick));
-            }
-            _dispatcherTimer = dispatcherTimer;
-            _dispatcherTimerTick = dispatcherTimerTick;
+            _dispatcherTimer = dispatcherTimer ?? throw new ArgumentNullException(nameof(dispatcherTimer));
+            _dispatcherTimerTick = dispatcherTimerTick ?? throw new ArgumentNullException(nameof(dispatcherTimerTick));
         }
 
         /// <inheritdoc />

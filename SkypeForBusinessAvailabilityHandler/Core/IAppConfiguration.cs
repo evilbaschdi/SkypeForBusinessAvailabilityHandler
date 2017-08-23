@@ -2,8 +2,7 @@ using EvilBaschdi.Core.DotNetExtensions;
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
-    /// <summary>
-    /// </summary>
+    /// <inheritdoc />
     public interface IAppConfiguration : IValueFor<string, string>
     {
     }

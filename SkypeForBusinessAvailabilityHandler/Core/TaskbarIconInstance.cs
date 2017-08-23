@@ -3,6 +3,7 @@ using Hardcodet.Wpf.TaskbarNotification;
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
+    /// <inheritdoc />
     public class TaskbarIconInstance : ITaskbarIconInstance
     {
         /// <summary>
@@ -10,11 +11,7 @@ namespace SkypeForBusinessAvailabilityHandler.Core
         /// </summary>
         public TaskbarIconInstance(TaskbarIcon taskbarIcon)
         {
-            if (taskbarIcon == null)
-            {
-                throw new ArgumentNullException(nameof(taskbarIcon));
-            }
-            Value = taskbarIcon;
+            Value = taskbarIcon ?? throw new ArgumentNullException(nameof(taskbarIcon));
         }
 
         /// <inheritdoc />

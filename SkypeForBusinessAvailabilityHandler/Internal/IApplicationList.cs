@@ -3,5 +3,8 @@ using EvilBaschdi.Core.DotNetExtensions;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
-    public interface IApplicationList : IValue<List<string>> { }
+    /// <inheritdoc />
+    public interface IApplicationList : IValue<List<string>>
+    {
+    }
 }

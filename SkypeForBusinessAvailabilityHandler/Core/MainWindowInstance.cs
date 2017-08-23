@@ -2,6 +2,7 @@
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
+    /// <inheritdoc />
     public class MainWindowInstance : IMainWindowInstance
     {
         /// <summary>
@@ -9,11 +10,7 @@ namespace SkypeForBusinessAvailabilityHandler.Core
         /// </summary>
         public MainWindowInstance(MainWindow mainWindow)
         {
-            if (mainWindow == null)
-            {
-                throw new ArgumentNullException(nameof(mainWindow));
-            }
-            Value = mainWindow;
+            Value = mainWindow ?? throw new ArgumentNullException(nameof(mainWindow));
         }
 
         /// <inheritdoc />

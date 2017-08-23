@@ -5,8 +5,10 @@ using SkypeForBusinessAvailabilityHandler.Core;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
+    /// <inheritdoc />
     public class IsProcessRunning : IIsProcessRunning
     {
+        /// <inheritdoc />
         public bool ValueFor(string processName)
         {
             if (processName == null)

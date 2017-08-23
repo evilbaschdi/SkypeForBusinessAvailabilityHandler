@@ -3,10 +3,12 @@ using System.Configuration;
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
+    /// <inheritdoc />
     /// <summary>
     /// </summary>
     public class AppConfiguration : IAppConfiguration
     {
+        /// <inheritdoc />
         /// <summary>
         ///     Reads key value from app.config.
         /// </summary>

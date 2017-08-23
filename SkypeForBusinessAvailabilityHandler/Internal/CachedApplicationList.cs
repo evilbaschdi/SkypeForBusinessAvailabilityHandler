@@ -4,17 +4,17 @@ using SkypeForBusinessAvailabilityHandler.Core;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
-    public class ApplicationList : CachedValue<List<string>>, IApplicationList
+    /// <inheritdoc cref="IApplicationList" />
+    public class CachedApplicationList : CachedValue<List<string>>, IApplicationList
     {
         private readonly IAppConfiguration _appConfiguration;
-
-        public ApplicationList(IAppConfiguration appConfiguration)
+        /// <summary>
+        /// Constructor of the class
+        /// </summary>
+        /// <param name="appConfiguration"></param>
+        public CachedApplicationList(IAppConfiguration appConfiguration)
         {
-            if (appConfiguration == null)
-            {
-                throw new ArgumentNullException(nameof(appConfiguration));
-            }
-            _appConfiguration = appConfiguration;
+            _appConfiguration = appConfiguration ?? throw new ArgumentNullException(nameof(appConfiguration));
         }
 
         /// <inheritdoc />

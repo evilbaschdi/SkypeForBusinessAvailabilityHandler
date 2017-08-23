@@ -2,6 +2,7 @@
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Interface for classes that return a cached value
     /// </summary>

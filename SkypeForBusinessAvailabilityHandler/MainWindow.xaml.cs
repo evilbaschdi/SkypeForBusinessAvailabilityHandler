@@ -5,13 +5,13 @@ using SkypeForBusinessAvailabilityHandler.Internal;
 
 namespace SkypeForBusinessAvailabilityHandler
 {
+    /// <inheritdoc cref="Window" />
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        /// <summary>
-        /// </summary>
+        /// <inheritdoc />
         public MainWindow()
         {
             InitializeComponent();
@@ -21,9 +21,9 @@ namespace SkypeForBusinessAvailabilityHandler
             ITaskbarIconInstance taskbarIconInstance = new TaskbarIconInstance(AvailabilityHandlerTaskbarIcon);
             ITaskbarIconContextMenu taskbarIconContextMenu = new TaskbarIconContextMenu(mainWindowInstance, taskbarIconInstance);
             ITaskbarIconConfiguration taskbarIconConfiguration = new TaskbarIconConfiguration(mainWindowInstance, taskbarIconInstance, taskbarIconContextMenu);
-            ILyncClientInstance lyncClientInstance = new LyncClientInstance();
+            ILyncClientInstance lyncClientInstance = new CachedLyncClientInstance();
             ILyncAvailability lyncAvailability = new LyncAvailability(lyncClientInstance);
-            IApplicationList applicationList = new ApplicationList(appConfiguration);
+            IApplicationList applicationList = new CachedApplicationList(appConfiguration);
             IIsProcessRunning isProcessRunning = new IsProcessRunning();
             IDispatcherTimerTick dispatcherTimerTick = new DispatcherTimerTick(lyncClientInstance, lyncAvailability, applicationList, isProcessRunning);
             IDispatcherTimerInstance dispatcherTimerInstance = new DispatcherTimerInstance(dispatcherTimer, dispatcherTimerTick);

@@ -2,6 +2,7 @@
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
+    /// <inheritdoc />
     public interface ITaskbarIconConfiguration : IRun
     {
     }

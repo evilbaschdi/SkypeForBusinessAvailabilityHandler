@@ -2,6 +2,7 @@
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
+    /// <inheritdoc />
     public class ProcessDispatcherHandler : IProcessDispatcherHandler
     {
         private readonly IDispatcherTimerInstance _dispatcherTimerInstance;
@@ -11,13 +12,7 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
         /// </summary>
         public ProcessDispatcherHandler(IDispatcherTimerInstance dispatcherTimerInstance)
         {
-            if (dispatcherTimerInstance == null)
-            {
-                throw new ArgumentNullException(nameof(dispatcherTimerInstance));
-            }
-
-
-            _dispatcherTimerInstance = dispatcherTimerInstance;
+            _dispatcherTimerInstance = dispatcherTimerInstance ?? throw new ArgumentNullException(nameof(dispatcherTimerInstance));
         }
 
         /// <inheritdoc />

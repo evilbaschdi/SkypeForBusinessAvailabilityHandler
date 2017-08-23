@@ -3,5 +3,8 @@ using EvilBaschdi.Core.DotNetExtensions;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
-    public interface IDispatcherTimerInstance : IValue<DispatcherTimer> { }
+    /// <inheritdoc />
+    public interface IDispatcherTimerInstance : IValue<DispatcherTimer>
+    {
+    }
 }

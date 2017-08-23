@@ -1,13 +1,10 @@
 using System;
-using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.IconPacks;
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <inheritdoc />
     public class TaskbarIconContextMenu : ITaskbarIconContextMenu
     {
         private readonly IMainWindowInstance _mainWindowInstance;
@@ -18,45 +15,27 @@ namespace SkypeForBusinessAvailabilityHandler.Core
         /// </summary>
         public TaskbarIconContextMenu(IMainWindowInstance mainWindowInstance, ITaskbarIconInstance taskbarIconInstance)
         {
-            if (mainWindowInstance == null)
-            {
-                throw new ArgumentNullException(nameof(mainWindowInstance));
-            }
-            if (taskbarIconInstance == null)
-            {
-                throw new ArgumentNullException(nameof(taskbarIconInstance));
-            }
-            _mainWindowInstance = mainWindowInstance;
-            _taskbarIconInstance = taskbarIconInstance;
+            _mainWindowInstance = mainWindowInstance ?? throw new ArgumentNullException(nameof(mainWindowInstance));
+            _taskbarIconInstance = taskbarIconInstance ?? throw new ArgumentNullException(nameof(taskbarIconInstance));
         }
 
+        /// <inheritdoc />
         public ContextMenu Value
         {
             get
             {
                 var contextMenu = new ContextMenu();
 
-
-                var restoreApplication = new MenuItem();
-                restoreApplication.Header = "Restore application";
-                restoreApplication.Icon = new PackIconMaterial
-                                          {
-                                              Kind = PackIconMaterialKind.WindowRestore
-                                          };
-                restoreApplication.Click += ContextMenuItemRestoreClick;
-
-                var closeApplication = new MenuItem();
-                closeApplication.Header = "Close application";
-                closeApplication.Icon = new PackIconMaterial
-                                        {
-                                            Kind = PackIconMaterialKind.Power
-                                        };
+                var closeApplication = new MenuItem
+                                       {
+                                           Header = "Close application",
+                                           Icon = new PackIconMaterial
+                                                  {
+                                                      Kind = PackIconMaterialKind.Power
+                                                  }
+                                       };
                 closeApplication.Click += ContextMenuItemCloseClick;
-
-                //contextMenu.Items.Add(new Separator());
-                //contextMenu.Items.Add(restoreApplication);
                 contextMenu.Items.Add(closeApplication);
-
 
                 return contextMenu;
             }
@@ -66,12 +45,6 @@ namespace SkypeForBusinessAvailabilityHandler.Core
         {
             _taskbarIconInstance.Value.Dispose();
             _mainWindowInstance.Value.Close();
-        }
-
-        private void ContextMenuItemRestoreClick(object sender, EventArgs e)
-        {
-            _mainWindowInstance.Value.Show();
-            _mainWindowInstance.Value.WindowState = WindowState.Normal;
         }
     }
 }

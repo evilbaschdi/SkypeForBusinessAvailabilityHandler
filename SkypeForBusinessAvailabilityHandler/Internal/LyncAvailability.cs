@@ -5,6 +5,7 @@ using Microsoft.Lync.Model;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
+    /// <inheritdoc />
     public class LyncAvailability : ILyncAvailability
     {
         private readonly ILyncClientInstance _lyncClientInstance;
@@ -14,24 +15,25 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
         /// </summary>
         public LyncAvailability(ILyncClientInstance lyncClientInstance)
         {
-            if (lyncClientInstance == null)
-            {
-                throw new ArgumentNullException(nameof(lyncClientInstance));
-            }
-            _lyncClientInstance = lyncClientInstance;
+            _lyncClientInstance = lyncClientInstance ?? throw new ArgumentNullException(nameof(lyncClientInstance));
         }
 
+        /// <inheritdoc />
         public void RunFor(ContactAvailability contactAvailability)
         {
             if (!Enum.IsDefined(typeof(ContactAvailability), contactAvailability))
             {
                 throw new InvalidEnumArgumentException(nameof(contactAvailability), (int) contactAvailability, typeof(ContactAvailability));
             }
-            _lyncClientInstance.Value.Self.BeginPublishContactInformation(
-                new Dictionary<PublishableContactInformationType, object>
-                {
-                    { PublishableContactInformationType.Availability, contactAvailability }
-                }, null, null);
+
+            _lyncClientInstance.Value.Self.BeginPublishContactInformation(new Dictionary<PublishableContactInformationType, object>
+                                                                          {
+                                                                              {
+                                                                                  PublishableContactInformationType
+                                                                                      .Availability,
+                                                                                  contactAvailability
+                                                                              }
+                                                                          }, null, null);
         }
     }
 }

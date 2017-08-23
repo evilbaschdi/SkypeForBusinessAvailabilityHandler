@@ -3,8 +3,7 @@ using Hardcodet.Wpf.TaskbarNotification;
 
 namespace SkypeForBusinessAvailabilityHandler.Core
 {
-    /// <summary>
-    /// </summary>
+    /// <inheritdoc />
     public interface ITaskbarIconInstance : IValue<TaskbarIcon>
     {
     }
