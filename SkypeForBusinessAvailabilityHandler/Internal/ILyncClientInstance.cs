@@ -1,4 +1,4 @@
-﻿using EvilBaschdi.Core.DotNetExtensions;
+﻿using EvilBaschdi.Core;
 using Microsoft.Lync.Model;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal

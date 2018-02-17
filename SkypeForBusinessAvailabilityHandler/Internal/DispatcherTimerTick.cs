@@ -34,10 +34,12 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             {
                 throw new ArgumentNullException(nameof(sender));
             }
+
             if (e == null)
             {
                 throw new ArgumentNullException(nameof(e));
             }
+
             if (!_isProcessRunning.ValueFor("lync") || _lyncClientInstance.Value.State != ClientState.SignedIn)
             {
                 return;
@@ -53,6 +55,7 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
                 {
                     continue;
                 }
+
                 setToBusy = _isProcessRunning.ValueFor(processName);
             }
 

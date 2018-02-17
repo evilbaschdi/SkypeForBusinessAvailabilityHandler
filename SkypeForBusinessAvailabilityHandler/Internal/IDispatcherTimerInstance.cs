@@ -1,5 +1,5 @@
 using System.Windows.Threading;
-using EvilBaschdi.Core.DotNetExtensions;
+using EvilBaschdi.Core;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {

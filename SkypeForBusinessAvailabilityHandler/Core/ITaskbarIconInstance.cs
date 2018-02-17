@@ -1,4 +1,4 @@
-﻿using EvilBaschdi.Core.DotNetExtensions;
+﻿using EvilBaschdi.Core;
 using Hardcodet.Wpf.TaskbarNotification;
 
 namespace SkypeForBusinessAvailabilityHandler.Core

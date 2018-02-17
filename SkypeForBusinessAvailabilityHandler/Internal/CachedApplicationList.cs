@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using SkypeForBusinessAvailabilityHandler.Core;
+using EvilBaschdi.Core;
+using EvilBaschdi.CoreExtended.AppHelpers;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
     /// <inheritdoc cref="IApplicationList" />
     public class CachedApplicationList : CachedValue<List<string>>, IApplicationList
     {
-        private readonly IAppConfiguration _appConfiguration;
+        private readonly IAppSettingFromConfigurationManager _appSettingFromConfigurationManager;
+
         /// <summary>
-        /// Constructor of the class
+        ///     Constructor of the class
         /// </summary>
-        /// <param name="appConfiguration"></param>
-        public CachedApplicationList(IAppConfiguration appConfiguration)
+        /// <param name="appSettingFromConfigurationManager"></param>
+        public CachedApplicationList(IAppSettingFromConfigurationManager appSettingFromConfigurationManager)
         {
-            _appConfiguration = appConfiguration ?? throw new ArgumentNullException(nameof(appConfiguration));
+            _appSettingFromConfigurationManager = appSettingFromConfigurationManager ?? throw new ArgumentNullException(nameof(appSettingFromConfigurationManager));
         }
 
         /// <inheritdoc />
@@ -23,7 +25,7 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             get
             {
                 var list = new List<string>();
-                var applications = _appConfiguration.ValueFor("applications");
+                var applications = _appSettingFromConfigurationManager.ValueFor("applications");
                 applications = applications.ToLower().Replace(".exe", "");
                 if (applications.Contains(";"))
                 {

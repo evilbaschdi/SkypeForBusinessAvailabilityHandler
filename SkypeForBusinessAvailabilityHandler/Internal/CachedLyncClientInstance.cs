@@ -1,5 +1,5 @@
-﻿using Microsoft.Lync.Model;
-using SkypeForBusinessAvailabilityHandler.Core;
+﻿using EvilBaschdi.Core;
+using Microsoft.Lync.Model;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
 {
