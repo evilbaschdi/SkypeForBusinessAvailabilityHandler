@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 using System.Windows.Threading;
 using EvilBaschdi.CoreExtended.AppHelpers;
 using SkypeForBusinessAvailabilityHandler.Core;
@@ -30,7 +31,7 @@ namespace SkypeForBusinessAvailabilityHandler
             IDispatcherTimerTick dispatcherTimerTick = new DispatcherTimerTick(lyncClientInstance, lyncAvailability, applicationList, isProcessRunning);
             IDispatcherTimerInstance dispatcherTimerInstance = new DispatcherTimerInstance(dispatcherTimer, dispatcherTimerTick);
             IProcessDispatcherHandler processDispatcherHandler = new ProcessDispatcherHandler(dispatcherTimerInstance);
-            IAutoStart autoStart = new AutoStart(Title);
+            IAutoStart autoStart = new AutoStart(Title, Assembly.GetExecutingAssembly().Location);
             IAutoStartByConfiguration autoStartByConfiguration = new AutoStartByConfiguration(appSettingFromConfigurationManager, autoStart);
 
             processDispatcherHandler.Run();
