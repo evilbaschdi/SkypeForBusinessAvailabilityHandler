@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.Lync.Model;
 
 namespace SkypeForBusinessAvailabilityHandler.Internal
@@ -49,28 +50,21 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             var contact = _lyncClientInstance.Value.Self.Contact;
             var currentAvailability = (ContactAvailability) contact.GetContactInformation(ContactInformationType.Availability);
 
-            foreach (var processName in _applicationList.Value)
+            foreach (var processName in _applicationList.Value.Where(_ => !setToBusy))
             {
-                if (setToBusy)
-                {
-                    continue;
-                }
-
                 setToBusy = _isProcessRunning.ValueFor(processName);
             }
 
-            if (setToBusy && currentAvailability.Equals(ContactAvailability.Free))
+            switch (setToBusy)
             {
-                _lyncAvailability.RunFor(ContactAvailability.Busy);
-                _setStateInternal = true;
-            }
-            else
-            {
-                if (!setToBusy && _setStateInternal && currentAvailability.Equals(ContactAvailability.Busy))
-                {
+                case true when currentAvailability.Equals(ContactAvailability.Free):
+                    _lyncAvailability.RunFor(ContactAvailability.Busy);
+                    _setStateInternal = true;
+                    break;
+                case false when _setStateInternal && currentAvailability.Equals(ContactAvailability.Busy):
                     _lyncAvailability.RunFor(ContactAvailability.Free);
                     _setStateInternal = false;
-                }
+                    break;
             }
         }
     }

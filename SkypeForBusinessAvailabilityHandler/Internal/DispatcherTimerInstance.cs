@@ -24,7 +24,7 @@ namespace SkypeForBusinessAvailabilityHandler.Internal
             get
             {
                 _dispatcherTimer.Tick += _dispatcherTimerTick.RunFor;
-                _dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+                _dispatcherTimer.Interval = new(0, 0, 10);
                 return _dispatcherTimer;
             }
         }

@@ -32,8 +32,12 @@ namespace SkypeForBusinessAvailabilityHandler.Core
         public void Run()
         {
             StartMinimized();
-            var filePath = Assembly.GetEntryAssembly().Location;
-            _taskbarIconInstance.Value.Icon = Icon.ExtractAssociatedIcon(filePath);
+            var filePath = Assembly.GetEntryAssembly()?.Location;
+            if (filePath != null)
+            {
+                _taskbarIconInstance.Value.Icon = Icon.ExtractAssociatedIcon(filePath);
+            }
+
             _taskbarIconInstance.Value.ContextMenu = _taskbarIconContextMenu.Value;
             //_taskbarIconInstance.Value.TrayMouseDoubleClick += TaskbarIconDoubleClick;
         }

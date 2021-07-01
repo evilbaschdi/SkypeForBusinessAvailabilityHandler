@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SkypeForBusinessAvailabilityHandler</RootNamespace>
@@ -10,7 +10,7 @@
     <Version>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.Hmm))-develop</Version>
     <Copyright>Copyright © 2017 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SkypeForBusinessAvailabilityHandler.xml</DocumentationFile>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -18,12 +18,13 @@
     <ApplicationIcon>a.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ControlzEx" Version="4.1.1" />
-    <PackageReference Include="EvilBaschdi.Core" Version="2019.10.10.1115-develop" />
-    <PackageReference Include="EvilBaschdi.CoreExtended" Version="2019.10.21.1930-develop" />
-    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.0.8" />
-    <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0531" />
-    <PackageReference Include="MahApps.Metro.IconPacks" Version="3.0.0-alpha0258" />
+    <PackageReference Include="ControlzEx" Version="5.0.0" />
+    <PackageReference Include="EvilBaschdi.Core" Version="2021.6.27.737-develop" />
+    <PackageReference Include="EvilBaschdi.CoreExtended" Version="2021.6.7.1723-develop" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.6" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.8.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0-preview.5.21301.5" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="a.ico">
